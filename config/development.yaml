@@ -1,14 +1,18 @@
 persistence:
-  defaultStore: cass-default
-  visibilityStore: cass-visibility
-  numHistoryShards: 4
+  defaultStore: mysql-default
+  visibilityStore: mysql-visibility
+  numHistoryShards: 512
   datastores:
-    cass-default:
-      cassandra:
-        hosts: "127.0.0.1"
-        keyspace: "temporal"
-    cass-visibility:
-      cassandra:
+    mysql-default:
+      sql:
+        user: "root"
+        password: "ranjithajith"
+        pluginName: "mysql"
+        databaseName: "temp"
+        connectAddr: "127.0.0.1"
+        connectProtocol: "tcp"
+    mysql-visibility:
+      sql:
         hosts: "127.0.0.1"
         keyspace: "temporal_visibility"
 global:
